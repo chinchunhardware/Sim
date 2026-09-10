@@ -4,31 +4,37 @@
 ================================================*/
 
 
-/*================================================
-  CARD URL
-================================================*/
+/* -----------------------------------------
+   DIGITAL CARD URL
+----------------------------------------- */
 
 const CARD_URL =
-    "https://torryweber.github.io/Sim-business-card/";
+    "https://chinchunhardware.github.io/Sim/";
 
 
-/*================================================
-  CONTACT INFORMATION
-================================================*/
+/* -----------------------------------------
+   CONTACT INFORMATION
+----------------------------------------- */
 
 const contact = {
 
-    firstName: "Kok Sim",
+    firstName:
+        "Kok Sim",
 
-    lastName: "Chua",
+    lastName:
+        "Chua",
 
-    fullName: "Chua Kok Sim",
+    fullName:
+        "Chua Kok Sim",
 
-    company: "Chin Chun Hardware",
+    company:
+        "Chin Chun Hardware",
 
-    phone: "+60126763999",
+    phone:
+        "+60126763999",
 
-    email: "cc_hardware@hotmail.com",
+    email:
+        "cc_hardware@hotmail.com",
 
     website:
         "https://www.chinchunhardware.my"
@@ -36,9 +42,9 @@ const contact = {
 };
 
 
-/*================================================
-  SAVE CONTACT
-================================================*/
+/* -----------------------------------------
+   SAVE CONTACT
+----------------------------------------- */
 
 const saveButton =
     document.getElementById("saveContact");
@@ -94,7 +100,9 @@ if (saveButton) {
                 document.createElement("a");
 
 
-            link.href = url;
+            link.href =
+                url;
+
 
             link.download =
                 "Chua_Kok_Sim.vcf";
@@ -102,7 +110,9 @@ if (saveButton) {
 
             document.body.appendChild(link);
 
+
             link.click();
+
 
             document.body.removeChild(link);
 
@@ -125,9 +135,9 @@ if (saveButton) {
 }
 
 
-/*================================================
-  SHARE DIGITAL BUSINESS CARD
-================================================*/
+/* -----------------------------------------
+   SHARE DIGITAL BUSINESS CARD
+----------------------------------------- */
 
 const shareButton =
     document.getElementById("shareButton");
@@ -156,14 +166,19 @@ if (shareButton) {
 
             try {
 
+                /* Native Share */
 
-                if (navigator.share) {
+                if (
+                    navigator.share
+                ) {
 
                     await navigator.share(
                         shareData
                     );
 
                 }
+
+                /* Fallback */
 
                 else {
 
@@ -174,11 +189,14 @@ if (shareButton) {
 
                 haptic();
 
-
             }
 
-            catch(error) {
+            catch (error) {
 
+                /*
+                   User cancelled the
+                   native share window.
+                */
 
                 if (
                     error.name !==
@@ -200,9 +218,9 @@ if (shareButton) {
 }
 
 
-/*================================================
-  COPY CARD LINK
-================================================*/
+/* -----------------------------------------
+   COPY DIGITAL CARD LINK
+----------------------------------------- */
 
 async function copyCardLink() {
 
@@ -219,7 +237,7 @@ async function copyCardLink() {
 
     }
 
-    catch(error) {
+    catch (error) {
 
         showMessage(
             CARD_URL
@@ -230,9 +248,9 @@ async function copyCardLink() {
 }
 
 
-/*================================================
-  TOAST MESSAGE
-================================================*/
+/* -----------------------------------------
+   TOAST MESSAGE
+----------------------------------------- */
 
 function showMessage(message) {
 
@@ -265,41 +283,54 @@ function showMessage(message) {
     toast.style.position =
         "fixed";
 
+
     toast.style.left =
         "50%";
+
 
     toast.style.bottom =
         "25px";
 
+
     toast.style.transform =
         "translateX(-50%)";
+
 
     toast.style.zIndex =
         "9999";
 
+
     toast.style.padding =
         "12px 20px";
+
 
     toast.style.borderRadius =
         "18px";
 
+
     toast.style.background =
         "rgba(0,0,0,.78)";
+
 
     toast.style.backdropFilter =
         "blur(15px)";
 
+
     toast.style.webkitBackdropFilter =
         "blur(15px)";
+
 
     toast.style.color =
         "#ffffff";
 
+
     toast.style.fontSize =
         "14px";
 
+
     toast.style.fontWeight =
         "600";
+
 
     toast.style.whiteSpace =
         "nowrap";
@@ -322,9 +353,9 @@ function showMessage(message) {
 }
 
 
-/*================================================
-  HAPTIC FEEDBACK
-================================================*/
+/* -----------------------------------------
+   HAPTIC FEEDBACK
+----------------------------------------- */
 
 function haptic() {
 
@@ -339,14 +370,12 @@ function haptic() {
 }
 
 
-/*================================================
-  BUTTON PRESS ANIMATION
-================================================*/
+/* -----------------------------------------
+   BUTTON PRESS ANIMATION
+----------------------------------------- */
 
 document
-    .querySelectorAll(
-        "a, button"
-    )
+    .querySelectorAll("a, button")
     .forEach(
         function(button) {
 
@@ -379,7 +408,8 @@ document
 
                         {
 
-                            duration:180,
+                            duration:
+                                180,
 
                             easing:
                                 "ease-out"
@@ -389,16 +419,15 @@ document
                     );
 
                 }
-
             );
 
         }
     );
 
 
-/*================================================
-  CARD ENTRANCE
-================================================*/
+/* -----------------------------------------
+   CARD ENTRANCE ANIMATION
+----------------------------------------- */
 
 window.addEventListener(
     "load",
@@ -423,28 +452,27 @@ window.addEventListener(
             [
 
                 {
-
-                    opacity:0,
+                    opacity:
+                        0,
 
                     transform:
                         "translateY(20px)"
-
                 },
 
                 {
-
-                    opacity:1,
+                    opacity:
+                        1,
 
                     transform:
                         "translateY(0)"
-
                 }
 
             ],
 
             {
 
-                duration:700,
+                duration:
+                    700,
 
                 easing:
                     "ease-out",
@@ -457,13 +485,12 @@ window.addEventListener(
         );
 
     }
-
 );
 
 
-/*================================================
-  IMAGE PRELOAD
-================================================*/
+/* -----------------------------------------
+   PRELOAD IMAGES
+----------------------------------------- */
 
 window.addEventListener(
     "load",
@@ -499,18 +526,16 @@ window.addEventListener(
         );
 
     }
-
 );
 
 
-/*================================================
-  SERVICE WORKER
-================================================*/
+/* -----------------------------------------
+   SERVICE WORKER / PWA
+----------------------------------------- */
 
 if (
     "serviceWorker" in navigator
 ) {
-
 
     window.addEventListener(
         "load",
@@ -547,11 +572,12 @@ if (
 }
 
 
-/*================================================
-  PREVENT DOUBLE-TAP ZOOM
-================================================*/
+/* -----------------------------------------
+   PREVENT DOUBLE-TAP ZOOM
+----------------------------------------- */
 
-let lastTouchEnd = 0;
+let lastTouchEnd =
+    0;
 
 
 document.addEventListener(
@@ -575,14 +601,8 @@ document.addEventListener(
         lastTouchEnd =
             now;
 
-
     },
     {
-        passive:false
+        passive: false
     }
 );
-
-
-/*================================================
-  END
-================================================*/
